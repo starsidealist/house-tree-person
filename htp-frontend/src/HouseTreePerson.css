@@ -1,0 +1,434 @@
+/* ===== 房树人·情绪显影 — Morandi 色系样式 ===== */
+
+:root {
+  --htp-bg: #f5f0eb;
+  --htp-card-bg: #ffffff;
+  --htp-text-primary: #4a3f3a;
+  --htp-text-secondary: #7a6f6a;
+  --htp-text-muted: #b0a8a3;
+  --htp-accent: #8b7e74;
+  --htp-accent-hover: #6f645b;
+  --htp-border: #e5ddd6;
+  --htp-shadow: rgba(74, 63, 58, 0.08);
+  --htp-radius: 16px;
+  --htp-radius-sm: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.htp-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--htp-bg);
+  color: var(--htp-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+/* ===== Header ===== */
+
+.htp-header {
+  padding: 48px 0 32px;
+  text-align: center;
+}
+
+.htp-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--htp-text-primary);
+  margin-bottom: 12px;
+}
+
+.htp-subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--htp-text-secondary);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ===== Main ===== */
+
+.htp-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== Upload Section ===== */
+
+.htp-upload-section {
+  text-align: center;
+}
+
+.htp-file-input {
+  display: none;
+}
+
+.htp-upload-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--htp-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--htp-radius-sm);
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 2px 8px var(--htp-shadow);
+}
+
+.htp-upload-button:hover {
+  background-color: var(--htp-accent-hover);
+}
+
+.htp-upload-button:active {
+  transform: scale(0.97);
+}
+
+.htp-upload-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ===== Preview ===== */
+
+.htp-preview-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.htp-preview {
+  max-width: 100%;
+  width: 280px;
+  height: auto;
+  border-radius: var(--htp-radius);
+  box-shadow: 0 4px 20px var(--htp-shadow);
+  object-fit: cover;
+}
+
+.htp-preview-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.htp-reupload-button,
+.htp-reset-button {
+  background: none;
+  border: 1px solid var(--htp-border);
+  border-radius: var(--htp-radius-sm);
+  padding: 8px 20px;
+  font-size: 14px;
+  color: var(--htp-text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.htp-reupload-button:hover,
+.htp-reset-button:hover {
+  border-color: var(--htp-accent);
+  color: var(--htp-accent);
+}
+
+/* ===== Result Section ===== */
+
+.htp-result-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Loading State --- */
+
+.htp-result-loading {
+  background-color: var(--htp-card-bg);
+  border-radius: var(--htp-radius);
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 2px dashed var(--htp-border);
+}
+
+.htp-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--htp-border);
+  border-top-color: var(--htp-accent);
+  border-radius: 50%;
+  animation: htp-spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes htp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.htp-loading-text {
+  font-size: 15px;
+  color: var(--htp-text-secondary);
+}
+
+/* --- Analysis Result --- */
+
+.htp-result-content {
+  flex: 1;
+}
+
+.htp-result-bubble {
+  background-color: var(--htp-card-bg);
+  border-radius: var(--htp-radius);
+  padding: 24px;
+  line-height: 1.8;
+  font-size: 15px;
+  color: var(--htp-text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid var(--htp-border);
+  box-shadow: 0 4px 16px var(--htp-shadow);
+}
+
+/* --- Error State --- */
+
+.htp-result-error {
+  background-color: #fff6f0;
+  border: 1px solid #f0d5c0;
+  border-radius: var(--htp-radius);
+  padding: 20px 24px;
+  text-align: center;
+}
+
+.htp-result-error p {
+  font-size: 14px;
+  color: #b06040;
+  line-height: 1.6;
+}
+
+/* --- Placeholder (empty) --- */
+
+.htp-result-placeholder {
+  background-color: var(--htp-card-bg);
+  border: 2px dashed var(--htp-border);
+  border-radius: var(--htp-radius);
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.htp-result-placeholder:has(.htp-result-hint) {
+  border-style: solid;
+  border-color: var(--htp-accent);
+  background-color: rgba(139, 126, 116, 0.04);
+}
+
+.htp-result-icon {
+  color: var(--htp-text-muted);
+  margin-bottom: 16px;
+}
+
+.htp-result-text {
+  font-size: 14px;
+  color: var(--htp-text-muted);
+  line-height: 1.6;
+  max-width: 220px;
+}
+
+.htp-result-hint {
+  font-size: 15px;
+  color: var(--htp-accent);
+  font-weight: 500;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ===== Footer ===== */
+
+.htp-footer {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.htp-footer p {
+  font-size: 12px;
+  color: var(--htp-text-muted);
+  letter-spacing: 1px;
+}
+
+/* ===== Mobile Responsive ===== */
+
+@media (max-width: 480px) {
+  .htp-container {
+    padding: 0 16px;
+  }
+
+  .htp-header {
+    padding: 36px 0 24px;
+  }
+
+  .htp-title {
+    font-size: 24px;
+  }
+
+  .htp-subtitle {
+    font-size: 14px;
+  }
+
+  .htp-upload-button {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+
+  .htp-preview {
+    width: 100%;
+  }
+
+  .htp-result-placeholder,
+  .htp-result-loading {
+    padding: 36px 20px;
+    min-height: 160px;
+  }
+
+  .htp-result-bubble {
+    padding: 20px;
+    font-size: 14px;
+  }
+}
+
+/* ===== Blockchain Section ===== */
+
+.htp-chain-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.htp-chain-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--htp-radius-sm);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.htp-chain-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.htp-connect-btn {
+  background-color: var(--htp-accent);
+  color: #fff;
+}
+
+.htp-connect-btn:hover:not(:disabled) {
+  background-color: var(--htp-accent-hover);
+}
+
+.htp-record-btn {
+  background-color: #e8e0d8;
+  color: var(--htp-text-primary);
+  border: 1px solid var(--htp-border);
+}
+
+.htp-record-btn:hover:not(:disabled) {
+  background-color: #ddd4ca;
+}
+
+.htp-chain-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.htp-wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--htp-text-secondary);
+  padding: 8px 12px;
+  background-color: var(--htp-card-bg);
+  border-radius: var(--htp-radius-sm);
+  border: 1px solid var(--htp-border);
+}
+
+.htp-wallet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  display: inline-block;
+}
+
+.htp-chain-status {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: var(--htp-radius-sm);
+}
+
+.htp-chain-success {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+}
+
+.htp-chain-error {
+  color: #b06040;
+  background-color: #fff6f0;
+}
+
+.htp-tx-link {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--htp-accent);
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.htp-spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--htp-border);
+  border-top-color: var(--htp-accent);
+  border-radius: 50%;
+  animation: htp-spin 0.8s linear infinite;
+}
