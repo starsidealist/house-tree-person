@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd htp-frontend && npm run build",
+  "outputDirectory": "htp-frontend/dist",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" }
+  ],
+  "functions": {
+    "api/analyze.js": {
+      "maxDuration": 60
+    }
+  }
+}
